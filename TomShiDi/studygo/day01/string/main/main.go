@@ -28,6 +28,20 @@ func main() {
 
 	ss1 = ss1 + " 中文"
 	for _, v := range ss1 {
-		fmt.Printf("%c\n", v)
+		fmt.Printf("字符类型：%T\t%c\n", v, v)
 	}
+
+	ss2 := "TomShiDi"
+	for _, v := range ss2 {
+		fmt.Printf("字符类型是：%T\t%c \n", v, v)
+	}
+
+	// 字符串无法修改
+	runeArr := []rune(ss1)
+	runeArr[0] = 'W'
+	fmt.Printf("重组后的rune数组是：%s \n", string(runeArr))
+
+	//c1 := 'H'
+	//c2 := byte('H')
+
 }
