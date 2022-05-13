@@ -1,2 +1,2 @@
 # gostudy
-personal go code for studying
+Personal go-code for studying
