@@ -30,7 +30,21 @@ func main() {
 	arr1[9] = 888
 	fmt.Printf("底层数组修改后s5=%v \n", s5)
 
-	// 修改切片，也会影响源数组对应下边的值
+	// 修改切片，也会影响源数组对应下标的值
 	s5[len(s5)-1] = 0
 	fmt.Printf("修改切片后，源数组arr1=%v \n", arr1)
+
+	// make函数构建切片
+	// 切片是引用类型，数据保存在底层数组中
+	ms := make([]int, 0, 2)
+	fmt.Printf("ms=%#v,ms的len=%d,cap=%d \n", ms, len(ms), cap(ms))
+
+	// 一个nil值的切片长度和容量都是0，但是长度和容量都是0的切片不一定是nil
+
+	// 切片的类型赋值是浅拷贝
+	s6 := []int{1, 2, 3}
+	s7 := s6
+	s6[0] = 1000
+
+	fmt.Printf("s6=%v,s7=%v \n", s6, s7)
 }
