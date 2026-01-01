@@ -2,7 +2,8 @@ package main
 
 import "fmt"
 
-/**
+/*
+*
 数组长度是数组类型的一部分
 */
 func main() {
@@ -21,17 +22,17 @@ func main() {
 	fmt.Printf("%#v \n", bollArr)
 
 	//数组遍历
-	println("**************")
+	fmt.Println("**************")
 	for i := 0; i < len(a4); i++ {
 		fmt.Printf("a4[%d]=%d \n", i, a4[i])
 	}
-	println("**************")
+	fmt.Println("**************")
 
-	println("**************")
+	fmt.Println("**************")
 	for index, item := range a4 {
 		fmt.Printf("a4[%d]=%d \n", index, item)
 	}
-	println("**************")
+	fmt.Println("**************")
 
 	// 多维数组
 	var aa1 [2][3]int = [2][3]int{{1, 2, 3}, {4, 5, 6}}
@@ -40,13 +41,13 @@ func main() {
 	fmt.Printf("aa2的值是：%#v \n", aa2)
 
 	// 多维数组遍历
-	println("**************")
+	fmt.Println("**************")
 	for i := 0; i < len(aa1); i++ {
 		for j := 0; j < len(aa1[i]); j++ {
 			fmt.Printf("%d \n", aa1[i][j])
 		}
 	}
-	println("**************")
+	fmt.Println("**************")
 
 	// 数组是值类型
 	b1 := [...]int{1, 2, 3}
