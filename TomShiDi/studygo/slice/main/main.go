@@ -3,6 +3,10 @@ package main
 import "fmt"
 
 func main() {
+	sliceMethod()
+}
+
+func base() {
 	// size决定初始化时实际分配空间的数量，capacity表示扩容阈值
 	var s1 []int = make([]int, 2, 4)
 	fmt.Printf("s1=%#v len=%d capacity=%d \n", s1, len(s1), cap(s1))
@@ -46,4 +50,28 @@ func main() {
 	s6[0] = 1000
 
 	fmt.Printf("s6=%v,s7=%v \n", s6, s7)
+}
+
+func sliceMethod() {
+	sliceA := make([]int, 5, 10)
+	fmt.Printf("sliceA=%v, len=%d, cap=%d \n", sliceA, len(sliceA), cap(sliceA))
+
+	// 使用append函数向切片添加元素
+	sliceA = append(sliceA, 1, 2, 3)
+	fmt.Printf("sliceA=%v, len=%d, cap=%d \n", sliceA, len(sliceA), cap(sliceA))
+
+	// 使用append函数添加另一个切片，需要展开
+	sliceB := make([]int, 0, 2)
+	sliceB = append(sliceB, sliceA...)
+	fmt.Printf("sliceB=%v, len=%d, cap=%d \n", sliceB, len(sliceB), cap(sliceB))
+
+	// 切片的拷贝
+	sliceC := make([]int, 20)
+	n := copy(sliceC, sliceB)
+	fmt.Printf("sliceC=%v, len=%d, cap=%d, n=%d \n", sliceC, len(sliceC), cap(sliceC), n)
+
+	// 删除切片元素 4
+	sliceD := []int{1, 2, 3, 4, 5, 6}
+	sliceD = append(sliceD[:3], sliceD[4:]...)
+	fmt.Printf("sliceD=%v \n", sliceD)
 }
