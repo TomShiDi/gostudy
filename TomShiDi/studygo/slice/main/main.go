@@ -8,12 +8,13 @@ func main() {
 	fmt.Printf("s1=%#v len=%d capacity=%d \n", s1, len(s1), cap(s1))
 	fmt.Printf("s1=nil?%v \n", s1 == nil)
 
+	// 切一个空元素的切片
+	// 一个nil值的切片长度和容量都是0，但是长度和容量都是0的切片不一定是nil
 	var s2 []int
 	fmt.Printf("s2=%#v \n", s2)
 	fmt.Printf("s2=nil?%v \n", s2 == nil)
 
 	arr1 := [...]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	// 切一个空元素的切片
 	s3 := arr1[:]
 	// 从数组得到的切片，cap等于[切片开始切的位置到数组最后的元素个数]
 	fmt.Printf("s3=%#v len=%d capacity=%d \n", s3, len(s3), cap(s3))
@@ -22,7 +23,7 @@ func main() {
 	fmt.Printf("s4=%#v len=%d capacity=%d \n", s4, len(s4), cap(s4))
 
 	// 切片再切
-	s5 := s4[3:]
+	s5 := s4[3:4]
 	fmt.Printf("s5=%#v len=%d capacity=%d \n", s5, len(s5), cap(s5))
 
 	// 切片是引用类型，指向底层数组
@@ -38,8 +39,6 @@ func main() {
 	// 切片是引用类型，数据保存在底层数组中
 	ms := make([]int, 0, 2)
 	fmt.Printf("ms=%#v,ms的len=%d,cap=%d \n", ms, len(ms), cap(ms))
-
-	// 一个nil值的切片长度和容量都是0，但是长度和容量都是0的切片不一定是nil
 
 	// 切片的类型赋值是浅拷贝
 	s6 := []int{1, 2, 3}

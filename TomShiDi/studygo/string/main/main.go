@@ -36,7 +36,7 @@ func main() {
 		fmt.Printf("字符类型是：%T\t%c \n", v, v)
 	}
 
-	// 字符串无法修改
+	// 字符串无法修改，所以需要先转换成rune数组或byte数组，修改后再转换回字符串
 	runeArr := []rune(ss1)
 	runeArr[0] = 'W'
 	fmt.Printf("重组后的rune数组是：%s \n", string(runeArr))
