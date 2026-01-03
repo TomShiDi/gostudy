@@ -39,6 +39,15 @@ func returnFunc(o string) func(int, int) int {
 	}
 }
 
+// 闭包使得方法中的i，对于某个闭包函数实例来说是全局的
+func closure() func(int) int {
+	i := 10
+	return func(x int) int {
+		i = i + x
+		return i
+	}
+}
+
 func main() {
 	c := add
 	fmt.Println("1+2=", c(1, 2))
@@ -67,4 +76,8 @@ func main() {
 		fmt.Println("匿名自执行函数,x=", x, "y=", y)
 	}(1, 2)
 
+	fn := closure()
+	fmt.Println("闭包执行第一次+10后= ", fn(10))
+	fmt.Println("闭包执行第二次+10后= ", fn(10))
+	fmt.Println("闭包执行第三次+10后= ", fn(10))
 }
