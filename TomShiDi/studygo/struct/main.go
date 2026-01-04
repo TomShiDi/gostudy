@@ -19,6 +19,35 @@ func (p *people) setInfo(name string, age int) {
 	p.age = age
 }
 
+type Remark struct {
+	note string
+}
+
+type ComplexPerson struct {
+	p      people
+	Remark                   // 匿名字段，使用时可以直接通过ComplexPerson访问people和Remark的字段和方法
+	hobby  []string          // 结构体中切片类型初始值为nil，需要初始化才能使用
+	others map[string]string // 结构体中map类型初始值为nil，需要初始化才能使用
+}
+
+// 父结构体
+type Animal struct {
+	Name string
+}
+
+func (a Animal) run() {
+	fmt.Println(a.Name, " 在跑")
+}
+
+type Dog struct {
+	Age int
+	Animal
+}
+
+func (d Dog) say() {
+	fmt.Println(d.Name, " 在汪汪汪")
+}
+
 func main() {
 	// 直接创建结构体变量
 	p1 := people{
@@ -50,4 +79,25 @@ func main() {
 	p4.printInfo()
 	p4.setInfo("你好", 18)
 	p4.printInfo()
+
+	cp := ComplexPerson{}
+	fmt.Printf("cp=%#v\n", cp)
+	cp.p.name = "tomshidi"
+	cp.p.age = 18
+	cp.hobby = []string{"吃饭", "睡觉", "打豆豆"}
+	cp.others = make(map[string]string)
+	cp.others["address"] = "广东"
+	// 访问匿名字段Remark的note字段，首先会在ComplexPerson中查找note字段，找不到再去Remark中查找
+	cp.note = "这是一个匿名字段"
+	fmt.Printf("cp=%#v\n", cp)
+
+	// 结构体嵌套、继承
+	dog := Dog{
+		Age: 3,
+		Animal: Animal{
+			Name: "旺财",
+		},
+	}
+	dog.run()
+	dog.say()
 }
