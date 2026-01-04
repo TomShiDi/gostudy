@@ -8,7 +8,7 @@ type myInt int
 
 // 给自定义类型添加方法
 func (i myInt) printType() {
-	fmt.Printf("i的类型是=%T\n", i)
+	fmt.Printf("自定义类型的自定义方法，i的类型是=%T\n", i)
 }
 
 func add(a, b int) int {
@@ -60,6 +60,7 @@ func main() {
 	// 使用自定义类型
 	var a myInt = 10
 	fmt.Printf("a类型是=%T\n", a)
+	a.printType()
 
 	// 使用函数类型作为参数
 	result := calcFunc1(10, 5, sub)
