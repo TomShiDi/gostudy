@@ -6,6 +6,11 @@ type calc func(int, int) int
 
 type myInt int
 
+// 给自定义类型添加方法
+func (i myInt) printType() {
+	fmt.Printf("i的类型是=%T\n", i)
+}
+
 func add(a, b int) int {
 	return a + b
 }
