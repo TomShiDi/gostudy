@@ -5,6 +5,7 @@ import "fmt"
 // 空接口，可以接收任意类型的值
 type Any interface{}
 
+// 结构体的中的方法是值类型接收者，那么实例化后结构体值类型和结构体指针类型的变量都可以调用该方法
 type Usber interface {
 	Start()
 	Stop()
@@ -21,6 +22,15 @@ func (p Phone) Start() {
 func (p Phone) Stop() {
 	fmt.Println(p.Name, "关机")
 }
+
+// 结构体的中的方法是指针类型接收者，那么实例化后结构体指针类型的变量才能调用该方法
+//func (p *Phone) Start() {
+//	fmt.Println(p.Name, "启动")
+//}
+//
+//func (p *Phone) Stop() {
+//	fmt.Println(p.Name, "关机")
+//}
 
 // show 使用空接口作为参数
 func show(a interface{}) {
@@ -57,4 +67,8 @@ func main() {
 	default:
 		fmt.Println("其他类型")
 	}
+
+	//
+	var pp = &Phone{"Samsung"}
+	pp.Start()
 }
